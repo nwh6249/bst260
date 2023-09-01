@@ -1,0 +1,84 @@
+---
+title: "HW0"
+author: "Nigel Harriman"
+format: html
+---
+
+# Defining our Function and Variables
+
+First, I will be solving the below equation for x given any values of a, b, or c.
+
+$$ f(x) = ax^2+bx+c = 0 $$
+Following, we will define our a, b, and c terms.
+
+```{r}
+#| echo: false
+#Setting our values of a, b, and c
+a <- 1
+b <- 0
+c <- 0
+discriminant <- b^2 - 4*a*c
+
+#Setting up a function to solve the quadratic#
+solve_quadratic <- function(a, b, c) {
+  discriminant <- b^2 - 4*a*c
+  #Two solutions#
+  if (discriminant > 0) {
+    root1 <- (-b + sqrt(discriminant)) / (2*a)
+    root2 <- (-b - sqrt(discriminant)) / (2*a)
+    print(paste("The roots of this equation are", root1, "and", root2) )
+  #One solution#  
+  } else if (discriminant == 0) {
+    root <- -b / (2*a)
+    print(paste("The root of this equation is", root) ) 
+  } else {
+  #No solutions#
+    realPart <- -b / (2*a)
+    imagPart <- sqrt(-discriminant) / (2*a)
+    print(paste("There are no roots of this equation for those values of a, b, and c") )
+  }
+}
+
+print(paste("The value of a is", a) ) 
+print(paste("The value of b is", b) ) 
+print(paste("The value of c is", c) ) 
+
+
+
+```
+
+Next, we solve for the roots.
+
+```{r}
+#| echo: false
+solve_quadratic(a, b, c)
+
+```
+
+```{r}
+#| echo: false
+# roots <- solve_quadratic(a, b, c)
+# if (discriminant > 0) { print(paste("The roots of this equation are", roots[1], "and", roots[2]) ) 
+# } else if (discriminant == 0) { print(paste("The root of this equation is", roots[1]) ) 
+# } else if (discriminant < 0 ) { print(paste("There are no roots of this equation for those values of a, b, and c") ) 
+# }
+```
+
+# Graphing the Function
+
+Below is a graph of the function using our specified values of a, b, and c within the x values of -5 to 5.
+```{r}
+#| echo: false
+print(paste("Reminder: the value of a is", a) ) 
+print(paste("Reminder: the value of b is", b) ) 
+print(paste("Reminder: the value of c is", c) ) 
+```
+
+```{r}
+#| echo: false
+x <- seq(-5, 5, length = 300)
+plot(x, a*x^2+b*x+c, type = "l")
+abline(h = 0, lty = 2)
+
+```
+The values of our roots will be where the function intersects with the x-axis. If you do not see the function intersect with the x-axis, then there are no roots!
